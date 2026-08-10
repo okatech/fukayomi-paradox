@@ -353,8 +353,9 @@
     head.setAttribute('aria-expanded', 'false');
     head.setAttribute('aria-controls', id);
     head.innerHTML =
-      '<div class="ep-meta"><span class="no dot" data-dot-scale="s" data-dot="' +
-        esc((planned ? 'PLAN ' : 'EP ') + pad(e.no)) + '"></span>' +
+      '<div class="ep-meta">' +
+        '<span class="sr-only">' + (planned ? '企画中のエピソード ' : 'エピソード ') + pad(e.no) + '</span>' +
+        '<span class="no dot" aria-hidden="true" data-dot-scale="s" data-dot="' + pad(e.no) + '"></span>' +
       meta + '</div>' +
       '<div><h3 class="ep-title">' + esc(e.title) + '</h3>' +
       '<p class="ep-lead">' + esc(lead || '') + '</p>' +

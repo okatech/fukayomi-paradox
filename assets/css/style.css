@@ -309,13 +309,13 @@ body.deep [data-plain]{display:none}
 .ep-list{border-top:1px solid var(--line)}
 .ep{border-bottom:1px solid var(--line)}
 .ep-head{
-  width:100%;display:grid;grid-template-columns:104px 1fr 40px;gap:0 28px;align-items:center;
+  width:100%;display:grid;grid-template-columns:124px 1fr 40px;gap:0 28px;align-items:start;
   padding:38px 0;text-align:left;transition:opacity .4s var(--ease);
 }
 .ep-head:hover{opacity:.55}
 .ep-meta{font-family:var(--en);font-size:.6875rem;font-weight:600;letter-spacing:.16em;color:var(--gray);line-height:2}
-.ep-meta .no{display:block;font-size:1.375rem;font-weight:800;color:var(--ink);letter-spacing:.04em}
-.ep-status{display:inline-block;margin-top:.6em;background:var(--paper-2);color:var(--ink-2);font-family:var(--serif);font-size:.6875rem;font-weight:700;letter-spacing:.14em;padding:.35em 1em;border-radius:999px}
+.ep-meta .no{display:flex;font-size:1.375rem;font-weight:800;color:var(--ink);letter-spacing:.04em}
+.ep-status{display:inline-block;margin-top:.6em;background:var(--paper-2);color:var(--ink-2);font-family:var(--serif);font-size:.6875rem;font-weight:700;letter-spacing:.14em;padding:.35em 1em;border-radius:999px;white-space:nowrap}
 .ep-title{font-size:clamp(1.05rem,2.4vw,1.375rem);font-weight:900;line-height:1.8;letter-spacing:.03em}
 .ep-lead{margin-top:.9em;font-size:.875rem;color:var(--ink-2);line-height:2.2}
 .ep-tags{margin-top:1.2em;display:flex;flex-wrap:wrap;gap:6px}
@@ -466,8 +466,10 @@ footer a:focus-visible,footer button:focus-visible,
   .about-list li{grid-template-columns:1fr;gap:14px}
   .about-list .n{grid-row:auto;padding-top:0}
   .ep-head{grid-template-columns:1fr 36px;gap:0 18px}
-  .ep-meta{grid-column:1/-1;margin-bottom:1em}
-  .ep-meta .no{display:inline;font-size:1.125rem;margin-right:.8em}
+  .ep-meta{grid-column:1/-1;margin-bottom:1em;display:flex;flex-wrap:wrap;align-items:center;gap:.6em 1em}
+  .ep-meta .no{font-size:1.125rem;margin-right:0}
+  .ep-meta .no.dot{margin-bottom:0}
+  .ep-status{margin-top:0}
   .ep-toggle{grid-row:2;align-self:start}
   .ep-detail{grid-template-columns:1fr;gap:44px;margin-left:0}
   .hosts{grid-template-columns:1fr;gap:12vh}
@@ -489,12 +491,6 @@ footer a:focus-visible,footer button:focus-visible,
   #brand-fixed{top:max(24px,env(safe-area-inset-top));left:max(22px,env(safe-area-inset-left))}
   /* 英字ロゴはヒーローと重複＋右上ボタンと干渉しうるので小画面では隠す */
   #brand-fixed .en{display:none}
-
-  /* ドットタイポの横溢れ防止：画面幅に応じて --u を連続縮小
-     04 LISTEN WATCH SHOP(200u) / FUKAYOMI PARADOX(168u) / PARADOX・PODCAST(75u) */
-  .hero-en .dot{--u:clamp(1.3px,.45vw,3px)}
-  .sec-links .sec-en .dot{--u:clamp(1.2px,.38vw,3px)}
-  .p-label .dot,.link-en .dot{--u:clamp(3px,1vw,8px)}
 
   /* タップ領域 44px 以上を確保 */
   .tag{min-height:44px;display:inline-flex;align-items:center;padding:.55em 1.15em}

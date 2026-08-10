@@ -2,58 +2,59 @@
 /* =========================================================
    DOT MATRIX TYPE — 表示用スタイル
    5x7 のドットを CSS Grid で組み、LEDパネル的な英文表示をつくる。
+
+   可読性の考え方:
+   ドット同士の隙間はドット径の 1/3 程度に抑える。隙間が大きいと
+   点の集合にしか見えず、小さい文字ほど読めなくなるため。
    ========================================================= */
 
 .dot{
   display:inline-flex;
+  flex-wrap:wrap;
   align-items:flex-end;
-  gap:var(--dot-gap, .9em);   /* 文字間 = ドット1個分 */
+  gap:calc(var(--u) * 2.4) calc(var(--u) * 3);  /* 行間 / 単語間 */
   line-height:1;
   vertical-align:middle;
   /* --u : ドット1個のサイズ。ここを変えると全体が拡縮する */
   --u:4px;
-  --dot-gap:calc(var(--u) * 2);
+  --gp:calc(var(--u) / 3);     /* ドット間の隙間 */
   --dot-color:currentColor;
   --dot-off:transparent;
 }
 
-/* サイズ段階（clamp でスマホ〜デスクトップを連続的に） */
-.dot[data-dot-scale="xs"]{--u:clamp(1.6px,.42vw,2.4px)}
-.dot[data-dot-scale="s"] {--u:clamp(2px,.55vw,3px)}
-.dot                      {--u:clamp(2.6px,.72vw,4px)}
-.dot[data-dot-scale="m"] {--u:clamp(3.2px,.95vw,5.5px)}
-.dot[data-dot-scale="l"] {--u:clamp(4.4px,1.6vw,9px)}
-.dot[data-dot-scale="xl"]{--u:clamp(5.5px,2.5vw,14px)}
+/* サイズ段階。実際の値は JS が置き場所の幅に合わせて上書きする。
+   ここでの指定は JS が動かなかった場合の安全側フォールバック。 */
+.dot[data-dot-scale="xs"]{--u:2.6px}
+.dot[data-dot-scale="s"] {--u:3px}
+.dot                     {--u:3.2px}
+.dot[data-dot-scale="m"] {--u:3.6px}
+.dot[data-dot-scale="l"] {--u:4.4px}
+.dot[data-dot-scale="xl"]{--u:5.4px}
+
+/* 単語単位で折り返す（長いラベルが画面からはみ出さないように） */
+.dot-word{
+  display:inline-flex;
+  gap:calc(var(--u) * 1.6);   /* 文字間 */
+}
 
 .dot-char{
   display:grid;
   grid-template-columns:repeat(5, var(--u));
   grid-template-rows:repeat(7, var(--u));
-  gap:var(--u);
+  gap:var(--gp);
 }
 
 .dot-char i{
   display:block;
   width:var(--u);
   height:var(--u);
-  border-radius:1px;
 }
-.dot-on{
-  background:var(--dot-color);
-  opacity:1;
-}
-.dot-off{
-  background:var(--dot-off);
-}
+.dot-on{background:var(--dot-color)}
+.dot-off{background:var(--dot-off)}
 
 /* 消灯ドットをうっすら残す＝LEDパネルの質感 */
 .dot.is-panel{--dot-off:currentColor}
-.dot.is-panel .dot-off{opacity:.1}
-
-.dot-space{
-  display:block;
-  width:calc(var(--u) * 3);
-}
+.dot.is-panel .dot-off{opacity:.12}
 
 .dot-fallback{
   font-family:var(--en, sans-serif);
@@ -62,7 +63,6 @@
 }
 
 /* ---------- 点灯アニメーション ---------- */
-/* 画面に入ったら左上から順に灯る */
 .dot.is-anim .dot-on{
   opacity:0;
   transform:scale(.4);
@@ -73,7 +73,7 @@
 }
 @keyframes dot-light{
   0%  {opacity:0;transform:scale(.4)}
-  55% {opacity:1;transform:scale(1.35)}
+  55% {opacity:1;transform:scale(1.3)}
   100%{opacity:1;transform:scale(1)}
 }
 

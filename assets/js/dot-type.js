@@ -67,27 +67,87 @@
 
   var COLS = 5, ROWS = 7;
 
+  /* data-dot-scale ごとのドット径（px）。上限＝理想サイズ、下限＝これ以上は縮めない。
+     実際の値は、置かれた場所の幅に合わせて自動調整する（fit を参照）。 */
+  var SCALE = {
+    xs: [2.2, 3.4],
+    s:  [2.4, 4.2],
+    m:  [2.8, 6.5],
+    l:  [3.4, 10],
+    xl: [4.0, 15],
+    '': [2.6, 5]
+  };
+  /* 1文字の幅（ドット径 u を単位とした値）。
+     5列 + 列間の隙間4つ（u/3）= 5 + 4/3 */
+  var CHAR_UNITS = COLS + (COLS - 1) / 3;
+  var CHAR_GAP_UNITS = 1.6;   /* .dot-word の gap */
+
+  /* 置かれた場所の幅を測り、はみ出さない最大のドット径を割り当てる。
+     一語で折り返せない語（PARADOX など）が溢れるのを防ぐ。 */
+  function fit(el) {
+    var key = el.getAttribute('data-dot-scale') || '';
+    var range = SCALE[key] || SCALE[''];
+    var words = el.querySelectorAll('.dot-word');
+    if (!words.length) return;
+
+    var widest = 0;
+    words.forEach(function (w) {
+      var n = w.children.length;
+      var units = n * CHAR_UNITS + (n - 1) * CHAR_GAP_UNITS;
+      if (units > widest) widest = units;
+    });
+    if (widest <= 0) return;
+
+    var parent = el.parentElement;
+    var avail = 0;
+    if (parent) {
+      var cs = getComputedStyle(parent);
+      avail = parent.clientWidth - parseFloat(cs.paddingLeft || 0) - parseFloat(cs.paddingRight || 0);
+    }
+    if (!avail || avail <= 0) return;
+
+    var u = Math.min(range[1], avail / widest);
+    u = Math.max(range[0], u);
+    el.style.setProperty('--u', Math.round(u * 100) / 100 + 'px');
+  }
+
+  function fitAll(root) {
+    (root || document).querySelectorAll('.dot.is-rendered').forEach(fit);
+  }
+
   function render(el) {
     var text = (el.getAttribute('data-dot') || el.textContent || '').toUpperCase();
     if (!text) return;
 
     // スクリーンリーダー用に元のテキストを保持
-    if (!el.getAttribute('aria-label')) el.setAttribute('aria-label', text);
-    el.setAttribute('role', 'img');
+    // （aria-hidden が付いている場合は、別途テキストが用意されているので触らない）
+    if (el.getAttribute('aria-hidden') !== 'true') {
+      if (!el.getAttribute('aria-label')) el.setAttribute('aria-label', text);
+      el.setAttribute('role', 'img');
+    }
     el.textContent = '';
 
     var chars = text.split('');
     var frag = document.createDocumentFragment();
     var index = 0;
     var panel = el.classList.contains('is-panel');
+    var word = null;
+
+    function newWord() {
+      word = document.createElement('span');
+      word.className = 'dot-word';
+      frag.appendChild(word);
+      return word;
+    }
 
     chars.forEach(function (ch) {
       if (ch === ' ') {
-        var sp = document.createElement('span');
-        sp.className = 'dot-space';
-        frag.appendChild(sp);
+        // 単語の区切り。ここで改行できるようにワードを分ける。
+        word = null;
         return;
       }
+      if (!word) newWord();
+
       var g = GLYPHS[ch];
       var cell = document.createElement('span');
       cell.className = 'dot-char';
@@ -96,7 +156,7 @@
         // 未定義文字はそのまま表示（フォールバック）
         cell.className = 'dot-fallback';
         cell.textContent = ch;
-        frag.appendChild(cell);
+        word.appendChild(cell);
         return;
       }
 
@@ -115,22 +175,32 @@
         }
       }
       index++;
-      frag.appendChild(cell);
+      word.appendChild(cell);
     });
 
     el.appendChild(frag);
     el.classList.add('is-rendered');
+    fit(el);
   }
 
   function renderAll(root) {
     (root || document).querySelectorAll('.dot:not(.is-rendered)').forEach(render);
   }
 
-  window.DotType = { render: render, renderAll: renderAll, glyphs: GLYPHS };
+  /* 画面幅が変わったら測り直す */
+  var resizeTimer = null;
+  window.addEventListener('resize', function () {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function () { fitAll(); }, 120);
+  });
+
+  window.DotType = { render: render, renderAll: renderAll, fit: fit, fitAll: fitAll, glyphs: GLYPHS };
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function () { renderAll(); });
   } else {
     renderAll();
   }
+  // Webフォント読み込みなどで幅が変わることがあるため、確定後にもう一度合わせる
+  window.addEventListener('load', function () { fitAll(); });
 })();
