@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#f4f2ee">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
+<title>深読みパラドックス｜FUKAYOMI PARADOX</title>
+<meta name="description" content="テクノロジーを語るのではなく、テクノロジーを通じて人間と社会を深読みするメディア。情報ではなく文脈を。ポッドキャスト『深読みパラドックス』公式サイト。">
+
+<meta property="og:site_name" content="深読みパラドックス">
+<meta property="og:title" content="深読みパラドックス｜FUKAYOMI PARADOX">
+<meta property="og:description" content="テクノロジーを語るのではなく、テクノロジーを通じて人間と社会を深読みするメディア。">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="assets/img/mark.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/img/mark.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/dot-type.css">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+<!-- ローディング -->
+<div id="loading">
+  <div class="mark" aria-hidden="true">
+    <svg viewBox="0 0 100 100"><circle cx="36" cy="50" r="26" stroke="currentColor" stroke-width="6" fill="none"/><circle cx="64" cy="50" r="26" stroke="currentColor" stroke-width="6" fill="none"/></svg>
+  </div>
+</div>
+
+<!-- イントロ（読み方の選択：文体そのものが切り替わる） -->
+<section id="intro" aria-label="読み方の選択">
+  <div class="intro-inner">
+    <p class="intro-lead">この番組には、<br>読み方がふたつあります。</p>
+    <div class="intro-choice">
+      <button class="btn btn-fill" data-mode="plain" aria-pressed="false">
+        <span class="ic-label">そのまま読む</span>
+        <span class="ic-note">短く、平たく。<br>どんな番組で、どこで聴けるか。</span>
+      </button>
+      <button class="btn" data-mode="deep" aria-pressed="false">
+        <span class="ic-label">深読みで読む</span>
+        <span class="ic-note">長く、込み入って。<br>言い換えず、留保をつけたまま。</span>
+      </button>
+    </div>
+    <p class="intro-note">選ぶと、サイト全体の文章そのものが入れ替わります。<br>あとからいつでも切り替えられます。</p>
+  </div>
+</section>
+
+<!-- 固定ロゴ（PC） -->
+<div id="brand-fixed" aria-hidden="true">
+  <span class="ja">深読みパラドックス</span>
+  <span class="en"><span class="dot" data-dot-scale="xs" data-dot="FUKAYOMI PARADOX"></span></span>
+</div>
+
+<!-- モード切り替え（PC 左下） -->
+<div id="mode-switch">
+  <p class="ms-row">
+    <span class="dot" data-dot-scale="xs" data-dot="MODE"></span>
+    <button type="button" data-mode="plain" aria-pressed="false">そのまま</button>
+    <span class="sep">/</span>
+    <button type="button" data-mode="deep" aria-pressed="false">深読み</button>
+  </p>
+  <p class="cr"><span class="dot" data-dot-scale="xs" data-dot="FUKAYOMI PARADOX"></span></p>
+</div>
+
+<!-- メニュー -->
+<button id="menu-btn" aria-label="メニュー" aria-expanded="false">
+  <span></span><span></span><span></span>
+</button>
+
+<nav id="menu" aria-hidden="true">
+  <ul>
+    <li><a href="#top" data-nav>トップ</a></li>
+    <li><a href="#about" data-nav>深読みとは</a></li>
+    <li><a href="#episodes" data-nav>エピソードを探す</a></li>
+    <li><a href="#hosts" data-nav>ふたりのこと</a></li>
+    <li><a href="#links" data-nav>聴く・観る・買う</a></li>
+    <li><a href="#contact" data-nav>おたより</a></li>
+  </ul>
+  <div class="menu-mode" role="group" aria-label="読み方の切り替え">
+    <p class="mm-label"><span class="dot" data-dot-scale="xs" data-dot="MODE"></span></p>
+    <div class="mm-toggle">
+      <button type="button" data-mode="plain" aria-pressed="false">そのまま</button>
+      <button type="button" data-mode="deep" aria-pressed="false">深読み</button>
+    </div>
+    <p class="mm-note">
+      <span data-plain>短く、平たく。</span>
+      <span data-deep>長く、込み入って。</span>
+    </p>
+  </div>
+  <p class="menu-cr">© FUKAYOMI PARADOX</p>
+</nav>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-mark" aria-hidden="true">
+      <svg viewBox="0 0 100 100">
+        <defs><clipPath id="hc"><circle cx="36" cy="50" r="26"/></clipPath></defs>
+        <circle class="c1" cx="36" cy="50" r="26" stroke="currentColor" stroke-width="4" fill="none"/>
+        <circle class="c2" cx="64" cy="50" r="26" stroke="currentColor" stroke-width="4" fill="none"/>
+        <g clip-path="url(#hc)"><circle class="ov" cx="64" cy="50" r="26" fill="currentColor"/></g>
+      </svg>
+    </div>
+    <h1 class="hero-title">
+      <span class="l">深読み</span><span class="l">パラドックス</span>
+    </h1>
+    <p class="hero-en"><span class="dot is-anim is-panel" data-dot-scale="s" data-dot="FUKAYOMI PARADOX"></span><span class="hero-en-sub">PODCAST</span></p>
+    <p class="hero-copy js-fi"><span data-copy><span data-plain>深く読むほど、わからなくなる。</span><span data-deep>深く読むほど、結論はほどけていく。</span></span></p>
+    <a class="hero-scroll" href="#about" data-nav><span class="dot" data-dot-scale="xs" data-dot="SCROLL"></span></a>
+  </section>
+
+  <!-- 宣言 -->
+  <section class="manifesto">
+    <p class="js-fi"><span data-copy><span data-plain>世の中には、情報が溢れている。</span><span data-deep>いま、世界は情報で飽和している。</span></span></p>
+    <p class="js-fi"><span data-copy><span data-plain>AI時代になって<br>価値が下がるのは「情報」。<br>価値が上がるのは「文脈」。</span><span data-deep>AIが情報を無限に複製するほど、<br>値を下げるのは「情報」そのもの。<br>値を上げるのは、それが置かれた「文脈」。</span></span></p>
+    <div class="ledger js-fi">
+      <div class="ledger-row"><span class="k">情報</span><span class="v"><span data-copy><span data-plain>誰でも取れる</span><span data-deep>複製できる、ゆえに安い</span></span></span></div>
+      <div class="ledger-row"><span class="k">文脈</span><span class="v"><span data-copy><span data-plain>深読みしないと見えない</span><span data-deep>読み解いた者にしか見えない</span></span></span></div>
+    </div>
+    <p class="js-fi"><span data-copy><span data-plain>巨大プラットフォームが、新しいモデルを出した。<br>ある会社が、次の戦略を語った。<br>新しい売り方が、静かに始まった。</span><span data-deep>また巨大プラットフォームが新しいモデルを公開し、<br>ある企業が次の一手を宣言し、<br>技術より先に「売り方」のほうが更新される。</span></span></p>
+    <p class="js-fi"><span data-copy><span data-plain>その<span class="strike">ニュース</span>ではなく、</span><span data-deep>その<span class="strike">出来事</span>そのものではなく、</span></span></p>
+    <p class="js-fi big"><span data-copy><span data-plain>「なぜ今そうなったのか」<br>を深掘りする。</span><span data-deep>「なぜ、よりによって今なのか」<br>を掘り下げる。</span></span></p>
+  </section>
+
+  <!-- パラドックス -->
+  <section class="paradox">
+    <div class="paradox-inner">
+      <p class="js-fi p-label"><span class="dot is-anim is-panel" data-dot-scale="l" data-dot="PARADOX"></span></p>
+      <p class="js-fi p-lead"><span data-copy><span data-plain>深く読むほど、<br>答えはひとつに定まらない。</span><span data-deep>深く読めば読むほど、<br>単純な結論から遠ざかる。</span></span></p>
+      <div class="paradox-compare">
+        <div class="pc js-fi">
+          <p class="pc-h">ふつうの解説番組</p>
+          <p class="pc-q">「つまり、答えはこれです」</p>
+          <p class="pc-n">で、終わる。</p>
+        </div>
+        <div class="pc pc-ours js-fi">
+          <p class="pc-h">深読みパラドックス</p>
+          <ul class="pc-list">
+            <li>「いや、実は逆かもしれない」</li>
+            <li>「歴史的には同じ構造があった」</li>
+            <li>「世代で見方が違う」</li>
+            <li>「技術ではなく社会現象だった」</li>
+          </ul>
+          <p class="pc-n">で、終わらない。</p>
+        </div>
+      </div>
+      <p class="js-fi p-close"><span data-copy><span data-plain>深く読むほど、分からなくなる。<br>でも、そのほうが面白い。<br><span class="em">それが、パラドックス。</span></span><span data-deep>深く読むほど、確かさは減っていく。<br>それでも、そのほうがずっと面白い。<br><span class="em">——それが、パラドックス。</span></span></span></p>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="sec">
+    <div class="sec-head js-fi">
+      <p class="sec-en"><span class="dot is-anim" data-dot-scale="s" data-dot="01 ABOUT"></span></p>
+      <h2><span data-copy><span data-plain>テクノロジーの話をしながら、<br>ほんとうは、人間と社会の話をしている。</span><span data-deep>テクノロジーを語るのではなく、<br>テクノロジーを通じて<br>人間と社会を深読みするメディア。</span></span></h2>
+    </div>
+    <div class="about-body">
+      <p class="js-fi lead"><span data-copy><span data-plain>実は、AIの話ですらありません。テックは、入口です。ほんとうに話したいのは「人は、なぜそう考えるのか」。だから話題は、どんどん広がっていきます。</span><span data-deep>主題は、AIですらない。テクノロジーはあくまで入口であって、問いの中心にあるのは「人類はなぜ、そう考えてしまうのか」という一点にある。だから扱う領域は、こちらの意図を超えて広がっていく。</span></span></p>
+
+      <div class="domains js-fi" aria-label="扱う領域">
+        <span>AI</span><span>IT</span><span>日本企業</span><span>資本主義</span><span>世代論</span><span>歴史</span><span>エネルギー</span><span>人間</span>
+      </div>
+
+      <ul class="about-list">
+        <li class="js-fi"><span class="n">01</span><h3><span data-copy><span data-plain>何が起きたか、より「なぜ今か」。</span><span data-deep>出来事ではなく、「なぜ、よりによって今か」。</span></span></h3><p><span data-copy><span data-plain>何が発表されたかは、5秒で分かります。私たちが気にするのは、それが「なぜ、今」なのか。事実の後ろで動いている力を読みます。</span><span data-deep>何が起きたかは検索すれば5秒で足りる。この番組が扱うのは、その発表がまさに今この瞬間に立ち上がってきた理由——事実の背後で働く力学のほうである。</span></span></p></li>
+        <li class="js-fi"><span class="n">02</span><h3><span data-copy><span data-plain>答えを、急がない。</span><span data-deep>結論を、性急に置かない。</span></span></h3><p><span data-copy><span data-plain>「いや、逆かもしれない」——そこから話は始まります。考えた結果わからなくなっても、それを失敗とは呼びません。</span><span data-deep>「いや、実は逆かもしれない」が現れたら、そこがようやく出発点になる。仮説と反証を重ねた末にたどり着く不確かさを、この番組は失敗とは呼ばない。</span></span></p></li>
+        <li class="js-fi"><span class="n">03</span><h3><span data-copy><span data-plain>聴かなくても、中身は分かる。</span><span data-deep>聴かないまま、要旨だけ持ち去ってもいい。</span></span></h3><p><span data-copy><span data-plain>どの回にも「3行の要点」「話の流れ」「キーワード」を用意しました。まず情報だけ持ち帰って、気になった回だけ、耳を貸してください。</span><span data-deep>すべての回に、要点・流れ・語彙の見取り図を添えてある。文脈だけを先に抜き取り、心が引っかかった一回にだけ、音声で戻ってくればいい。</span></span></p></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- EPISODES -->
+  <section id="episodes" class="sec sec-episodes">
+    <div class="sec-head js-fi">
+      <p class="sec-en"><span class="dot is-anim" data-dot-scale="s" data-dot="02 EPISODES"></span></p>
+      <h2><span data-copy><span data-plain>何が話されたか、だけでも。</span><span data-deep>「何が話されたか」だけを、先に。</span></span></h2>
+      <p class="sec-desc"><span data-copy><span data-plain>聴く時間がなくても、大丈夫です。要点・話の流れ・出てきた言葉から、その回で何が起きたのかを掴めます。</span><span data-deep>聴取の時間がなくても構わない。要点と流れ、そこで飛び交った語彙——その三つから、その回の「出来事」のかたちだけは掴めるようにしてある。</span></span><span class="note-planned">※ 現在は配信準備中のため、企画中のエピソードを掲載しています。</span></p>
+    </div>
+
+    <div class="finder js-fi">
+      <div class="finder-search">
+        <label for="q" class="sr-only">キーワードで探す</label>
+        <input id="q" type="search" placeholder="キーワードで探す（例：常駐、世代、科学）" autocomplete="off">
+      </div>
+      <div class="finder-tags" id="tagbar" role="group" aria-label="タグで絞り込み"></div>
+      <p class="finder-count" id="count"></p>
+    </div>
+
+    <ol class="ep-list" id="ep-list"></ol>
+    <p class="ep-empty" id="ep-empty" hidden>該当する回が見つかりませんでした。<br>別の言葉で探してみてください。</p>
+  </section>
+
+  <!-- HOSTS -->
+  <section id="hosts" class="sec">
+    <div class="sec-head js-fi">
+      <p class="sec-en"><span class="dot is-anim" data-dot-scale="s" data-dot="03 HOSTS"></span></p>
+      <h2>Thinker と Challenger</h2>
+      <p class="sec-desc"><span data-copy><span data-plain>ひとりが枠組みを立て、ひとりが現場から崩す。どちらかが正解を持っている番組ではありません。</span><span data-deep>一方が構造を立ち上げ、一方が現場の手触りでそれを崩す。どちらかが正解を握っている、という番組ではない。</span></span></p>
+    </div>
+    <div class="hosts">
+      <div class="host js-fi">
+        <div class="host-face" aria-hidden="true"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="30" stroke="currentColor" stroke-width="4" fill="none"/><circle cx="50" cy="50" r="8" fill="currentColor"/></svg></div>
+        <p class="host-role"><span class="dot" data-dot-scale="xs" data-dot="THINKER"></span></p>
+        <h3 data-host="thinker">Thinker</h3>
+        <ul class="host-do">
+          <li>仮説を立てる</li>
+          <li>歴史を持ち込む</li>
+          <li>構造を語る</li>
+        </ul>
+        <p><span data-copy><span data-plain>AIの話をしていたはずが、気づけば「科学も、宗教みたいなものでは？」まで行く。遠くへ連れていく担当。</span><span data-deep>AIを論じていたはずが、いつのまにか「科学それ自体も一種の信仰ではないか」という地点まで滑り込む。思考を遠くへ連れ去る係。</span></span></p>
+      </div>
+      <div class="host js-fi">
+        <div class="host-face" aria-hidden="true"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="30" stroke="currentColor" stroke-width="4" fill="none"/><path d="M32 50h36" stroke="currentColor" stroke-width="6"/></svg></div>
+        <p class="host-role"><span class="dot" data-dot-scale="xs" data-dot="CHALLENGER"></span></p>
+        <h3 data-host="challenger">Challenger</h3>
+        <ul class="host-do">
+          <li>顧客の現場を持ち込む</li>
+          <li>実体験をぶつける</li>
+          <li>「それ本当にそうなの？」を投げる</li>
+        </ul>
+        <p><span data-copy><span data-plain>話が綺麗にまとまりかけた瞬間に、現場の具体をひとつ置いて崩す。地面へ引き戻す担当。</span><span data-deep>構造の話が美しく閉じかけた、まさにその瞬間に、現場の生々しい一例を差し込んで崩す。議論を地表へ引き戻す係。</span></span></p>
+      </div>
+    </div>
+    <div class="rule js-fi">
+      <p class="rule-label"><span class="dot is-anim" data-dot-scale="s" data-dot="RULE"></span></p>
+      <p class="rule-body">収録前、<span class="hl">Challenger は台本を読まない。</span></p>
+      <p class="rule-note"><span data-copy><span data-plain>段取りを先に共有すると、驚きも反論も「演技」になります。だから、その場で初めて聞く状態を、わざと残しています。</span><span data-deep>段取りを共有した瞬間、驚きも反論も再現された「演技」に変わる。だから、初めて聞くときの無防備さを、設計としてわざと残している。</span></span></p>
+    </div>
+  </section>
+
+  <!-- LINKS -->
+  <section id="links" class="sec sec-links">
+    <div class="sec-head js-fi">
+      <p class="sec-en"><span class="dot is-anim" data-dot-scale="s" data-dot="04 LISTEN WATCH SHOP"></span></p>
+      <h2>聴く・観る・買う</h2>
+    </div>
+    <div class="link-grid" id="link-grid"></div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="sec sec-contact">
+    <div class="sec-head js-fi">
+      <p class="sec-en"><span class="dot is-anim" data-dot-scale="s" data-dot="05 CONTACT"></span></p>
+      <h2>おたより、待っています</h2>
+    </div>
+    <p class="js-fi contact-lead"><span data-copy><span data-plain>「それ、深読みしすぎでは？」という声も、扱ってほしいテーマも、全部読んでいます。ぜんぶ、Challenger の材料になります。</span><span data-deep>「それは深読みが過ぎるのでは」という疑いも、扱ってほしい主題も、こちらはすべて読んでいる。あなたのその違和感が、そのまま Challenger の手札になる。</span></span></p>
+    <a class="btn btn-fill big js-fi" id="contact-btn" href="#">おたよりを送る<span class="mk">◑</span></a>
+  </section>
+
+</main>
+
+<footer>
+  <div class="foot-mark" aria-hidden="true">
+    <svg viewBox="0 0 100 100"><defs><clipPath id="fc"><circle cx="36" cy="50" r="26"/></clipPath></defs><circle cx="36" cy="50" r="26" stroke="currentColor" stroke-width="6" fill="none"/><circle cx="64" cy="50" r="26" stroke="currentColor" stroke-width="6" fill="none"/><g clip-path="url(#fc)"><circle cx="64" cy="50" r="26" fill="currentColor"/></g></svg>
+  </div>
+  <p class="foot-title">深読みパラドックス</p>
+  <ul class="foot-links" id="foot-links"></ul>
+  <p class="foot-cr">© FUKAYOMI PARADOX. all rights reserved.</p>
+</footer>
+
+<script src="assets/js/site.config.js"></script>
+<script src="assets/js/dot-type.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

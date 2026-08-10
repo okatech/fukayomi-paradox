@@ -1,0 +1,92 @@
+@charset "utf-8";
+/* =========================================================
+   DOT MATRIX TYPE — 表示用スタイル
+   5x7 のドットを CSS Grid で組み、LEDパネル的な英文表示をつくる。
+   ========================================================= */
+
+.dot{
+  display:inline-flex;
+  align-items:flex-end;
+  gap:var(--dot-gap, .9em);   /* 文字間 = ドット1個分 */
+  line-height:1;
+  vertical-align:middle;
+  /* --u : ドット1個のサイズ。ここを変えると全体が拡縮する */
+  --u:4px;
+  --dot-gap:calc(var(--u) * 2);
+  --dot-color:currentColor;
+  --dot-off:transparent;
+}
+
+/* サイズ段階（clamp でスマホ〜デスクトップを連続的に） */
+.dot[data-dot-scale="xs"]{--u:clamp(1.6px,.42vw,2.4px)}
+.dot[data-dot-scale="s"] {--u:clamp(2px,.55vw,3px)}
+.dot                      {--u:clamp(2.6px,.72vw,4px)}
+.dot[data-dot-scale="m"] {--u:clamp(3.2px,.95vw,5.5px)}
+.dot[data-dot-scale="l"] {--u:clamp(4.4px,1.6vw,9px)}
+.dot[data-dot-scale="xl"]{--u:clamp(5.5px,2.5vw,14px)}
+
+.dot-char{
+  display:grid;
+  grid-template-columns:repeat(5, var(--u));
+  grid-template-rows:repeat(7, var(--u));
+  gap:var(--u);
+}
+
+.dot-char i{
+  display:block;
+  width:var(--u);
+  height:var(--u);
+  border-radius:1px;
+}
+.dot-on{
+  background:var(--dot-color);
+  opacity:1;
+}
+.dot-off{
+  background:var(--dot-off);
+}
+
+/* 消灯ドットをうっすら残す＝LEDパネルの質感 */
+.dot.is-panel{--dot-off:currentColor}
+.dot.is-panel .dot-off{opacity:.1}
+
+.dot-space{
+  display:block;
+  width:calc(var(--u) * 3);
+}
+
+.dot-fallback{
+  font-family:var(--en, sans-serif);
+  font-size:calc(var(--u) * 7);
+  line-height:1;
+}
+
+/* ---------- 点灯アニメーション ---------- */
+/* 画面に入ったら左上から順に灯る */
+.dot.is-anim .dot-on{
+  opacity:0;
+  transform:scale(.4);
+}
+.dot.is-anim.is-lit .dot-on{
+  animation:dot-light .34s cubic-bezier(.25,.46,.45,.94) forwards;
+  animation-delay:var(--d, 0ms);
+}
+@keyframes dot-light{
+  0%  {opacity:0;transform:scale(.4)}
+  55% {opacity:1;transform:scale(1.35)}
+  100%{opacity:1;transform:scale(1)}
+}
+
+/* ---------- ホバーでのちらつき（リンクカード用） ---------- */
+.dot-hover:hover .dot-on{animation:dot-flicker .55s steps(2,end)}
+@keyframes dot-flicker{
+  0%,100%{opacity:1}
+  20%{opacity:.35}
+  40%{opacity:1}
+  60%{opacity:.5}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .dot.is-anim .dot-on{opacity:1;transform:none;animation:none!important}
+  .dot-hover:hover .dot-on{animation:none}
+}
