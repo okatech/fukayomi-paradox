@@ -81,6 +81,8 @@
      5列 + 列間の隙間4つ（u/3）= 5 + 4/3 */
   var CHAR_UNITS = COLS + (COLS - 1) / 3;
   var CHAR_GAP_UNITS = 1.6;   /* .dot-word の gap */
+  var WORD_GAP_UNITS = 3;     /* .dot の語間 gap */
+  var WRAP_TOLERANCE = 0.9;   /* この割合まで縮めれば1行に収まる場合は縮める */
 
   /* 置かれた場所の幅を測り、はみ出さない最大のドット径を割り当てる。
      一語で折り返せない語（PARADOX など）が溢れるのを防ぐ。 */
@@ -90,13 +92,16 @@
     var words = el.querySelectorAll('.dot-word');
     if (!words.length) return;
 
-    var widest = 0;
+    var widest = 0, total = 0;
     words.forEach(function (w) {
       var n = w.children.length;
       var units = n * CHAR_UNITS + (n - 1) * CHAR_GAP_UNITS;
       if (units > widest) widest = units;
+      total += units;
     });
     if (widest <= 0) return;
+    /* 語と語の隙間（.dot の column-gap = u*3）も足して、1行に必要な幅を出す */
+    total += (words.length - 1) * WORD_GAP_UNITS;
 
     var parent = el.parentElement;
     var avail = 0;
@@ -107,6 +112,10 @@
     if (!avail || avail <= 0) return;
 
     var u = Math.min(range[1], avail / widest);
+    /* あと数pxで1行に収まる場合だけ、わずかに縮めて折り返しを防ぐ。
+       （大きく縮めないと収まらない見出しは、これまで通り複数行のまま） */
+    var uLine = avail / total;
+    if (uLine >= range[0] && uLine >= u * WRAP_TOLERANCE) u = Math.min(u, uLine);
     u = Math.max(range[0], u);
     el.style.setProperty('--u', Math.round(u * 100) / 100 + 'px');
   }

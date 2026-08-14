@@ -199,8 +199,10 @@ body.deep [data-plain]{display:none}
 }
 .hero-copy.on::after{transform:scaleX(1)}
 .hero-scroll{position:absolute;bottom:26px;font-family:var(--en);font-size:.625rem;letter-spacing:.3em;color:var(--gray);min-height:44px;display:flex;align-items:center}
-.hero-scroll span{position:relative}
-.hero-scroll span::after{content:"";position:absolute;left:50%;top:2.4em;width:1px;height:38px;background:var(--gray);animation:drop 2.2s var(--ease) infinite}
+/* ドットタイポは内部に .dot-word / .dot-char の span を生成するため、
+   直下の span だけに限定しないと縦線が文字数ぶん複製される */
+.hero-scroll>span{position:relative}
+.hero-scroll>span::after{content:"";position:absolute;left:50%;top:2.4em;width:1px;height:38px;background:var(--gray);animation:drop 2.2s var(--ease) infinite}
 @keyframes drop{0%{transform:scaleY(0);transform-origin:top}45%{transform:scaleY(1);transform-origin:top}55%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
 
 /* ---------- ドットタイポの各所への適用 ---------- */
