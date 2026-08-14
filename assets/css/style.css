@@ -468,11 +468,14 @@ footer a:focus-visible,footer button:focus-visible,
   .about-list li{grid-template-columns:1fr;gap:14px}
   .about-list .n{grid-row:auto;padding-top:0}
   .ep-head{grid-template-columns:1fr 36px;gap:0 18px}
-  .ep-meta{grid-column:1/-1;margin-bottom:1em;display:flex;flex-wrap:wrap;align-items:center;gap:.6em 1em}
+  .ep-meta{grid-column:1/-1;grid-row:1;margin-bottom:1em;display:flex;flex-wrap:wrap;align-items:center;gap:.6em 1em}
   .ep-meta .no{font-size:1.125rem;margin-right:0}
   .ep-meta .no.dot{margin-bottom:0}
   .ep-status{margin-top:0}
-  .ep-toggle{grid-row:2;align-self:start}
+  /* 明示的に配置しないと、grid-row だけ指定した .ep-toggle が
+     自動配置より先に 1 列目を取り、本文が 2 列目（36〜48px）へ押し込まれる */
+  .ep-head>div:not(.ep-meta){grid-column:1;grid-row:2;min-width:0}
+  .ep-toggle{grid-column:2;grid-row:2;align-self:start}
   .ep-detail{grid-template-columns:1fr;gap:44px;margin-left:0}
   .hosts{grid-template-columns:1fr;gap:12vh}
   .paradox-compare{grid-template-columns:1fr}
