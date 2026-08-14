@@ -244,11 +244,9 @@ body.deep [data-plain]{display:none}
 .paradox-inner{max-width:1000px;margin:0 auto;text-align:center}
 .p-label{font-family:var(--en);font-size:.6875rem;font-weight:800;letter-spacing:.4em;color:var(--accent);margin-bottom:3em}
 .p-lead{font-size:clamp(1.35rem,4.6vw,2.6rem);font-weight:900;line-height:1.9;margin-bottom:clamp(56px,10vh,140px)}
-.paradox-compare{display:grid;grid-template-columns:1fr 1fr;gap:0;text-align:left;border-top:1px solid rgba(244,242,238,.24)}
+.paradox-compare{display:grid;grid-template-columns:1fr;gap:0;text-align:left;border-top:1px solid rgba(244,242,238,.24)}
 .pc{padding:48px 44px;border-bottom:1px solid rgba(244,242,238,.24)}
-.pc:first-child{border-right:1px solid rgba(244,242,238,.24)}
 .pc-h{font-family:var(--en);font-size:.625rem;font-weight:800;letter-spacing:.24em;color:var(--gray);margin-bottom:2.4em}
-.pc-q{font-size:1.0625rem;font-weight:700;line-height:2;color:var(--gray)}
 .pc-list li{font-size:1.0625rem;font-weight:700;line-height:2;margin-bottom:1em;padding-left:1.4em;position:relative}
 .pc-list li::before{content:"◑";position:absolute;left:0;color:var(--accent);font-size:.75em;top:.35em}
 .pc-n{margin-top:2.4em;font-size:.8125rem;letter-spacing:.12em;color:var(--gray)}
@@ -361,7 +359,11 @@ body.deep [data-plain]{display:none}
 
 /* ---------- HOSTS ---------- */
 .hosts{display:grid;grid-template-columns:1fr 1fr;gap:6vw}
-.host-face{width:96px;color:var(--ink);margin-bottom:2.4em}
+.host-face{
+  width:clamp(120px,26vw,164px);aspect-ratio:4/5;color:var(--ink);margin-bottom:2.4em;
+  background:var(--paper-2);overflow:hidden;
+}
+.host-face svg{display:block;width:100%;height:100%}
 .host-role{font-family:var(--en);font-size:.625rem;font-weight:800;letter-spacing:.28em;color:var(--ink);background:var(--accent);display:inline-block;padding:.5em 1.2em;margin-bottom:1.8em}
 .host h3{font-size:1.875rem;font-weight:900;line-height:1.4}
 .host h3 span{display:block;font-size:.75rem;font-weight:500;letter-spacing:.2em;color:var(--ink-2);margin-top:.8em}
@@ -369,13 +371,6 @@ body.deep [data-plain]{display:none}
 .host-do li{position:relative;padding:.9em 0 .9em 1.6em;border-bottom:1px solid var(--line);font-size:.875rem;font-weight:700;line-height:1.8}
 .host-do li::before{content:"◑";position:absolute;left:0;top:.95em;font-size:.7em;color:var(--ink)}
 .host p{margin-top:2.2em;font-size:.9375rem;color:var(--ink-2);line-height:2.4}
-
-/* 収録ルール */
-.rule{margin-top:clamp(72px,11vh,150px);border:1px solid var(--ink);padding:56px 48px;text-align:center}
-.rule-label{font-family:var(--en);font-size:.625rem;font-weight:800;letter-spacing:.32em;color:var(--gray);margin-bottom:2.4em}
-.rule-body{font-size:clamp(1.1rem,3.2vw,1.75rem);font-weight:900;line-height:2}
-.rule-body .hl{background:var(--accent);padding:.1em .35em}
-.rule-note{margin-top:2.4em;font-size:.875rem;color:var(--ink-2);line-height:2.4;max-width:560px;margin-left:auto;margin-right:auto}
 
 /* ---------- LINKS ---------- */
 .sec-links{max-width:1180px}
@@ -480,9 +475,7 @@ footer a:focus-visible,footer button:focus-visible,
   .hosts{grid-template-columns:1fr;gap:12vh}
   .paradox-compare{grid-template-columns:1fr}
   .pc{padding:36px 0}
-  .pc:first-child{border-right:0}
   .ledger-row{grid-template-columns:1fr;gap:8px}
-  .rule{padding:40px 24px}
   .link-grid{grid-template-columns:1fr}
   .link-card,.link-card:nth-child(odd),.link-card:nth-child(even){padding:44px 0;border-right:0}
   .link-card:nth-child(odd) .link-arrow,.link-arrow{top:44px;right:0}
@@ -508,10 +501,6 @@ footer a:focus-visible,footer button:focus-visible,
 
   /* 縦リズム */
   .hosts{gap:clamp(64px,10vh,120px)}
-
-  /* 比較ブロック：1カラム化しても「対比」が伝わる区切り（◑ が線を跨ぐ） */
-  .paradox-compare .pc+.pc{position:relative;border-top:1px solid rgba(244,242,238,.24);margin-top:10px;padding-top:52px}
-  .paradox-compare .pc+.pc::before{content:"◑";position:absolute;top:-.7em;left:50%;transform:translateX(-50%);color:var(--accent);background:var(--ink);padding:0 .45em;font-size:1.35rem;line-height:1}
 }
 
 @media (prefers-reduced-motion:reduce){

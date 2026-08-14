@@ -136,11 +136,6 @@
       <p class="js-fi p-label"><span class="dot is-anim is-panel" data-dot-scale="l" data-dot="PARADOX"></span></p>
       <p class="js-fi p-lead"><span data-copy><span data-plain>深く読むほど、<br>答えはひとつに定まらない。</span><span data-deep>深く読めば読むほど、<br>単純な結論から遠ざかる。</span></span></p>
       <div class="paradox-compare">
-        <div class="pc js-fi">
-          <p class="pc-h">ふつうの解説番組</p>
-          <p class="pc-q">「つまり、答えはこれです」</p>
-          <p class="pc-n">で、終わる。</p>
-        </div>
         <div class="pc pc-ours js-fi">
           <p class="pc-h">深読みパラドックス</p>
           <ul class="pc-list">
@@ -207,9 +202,33 @@
     </div>
     <div class="hosts">
       <div class="host js-fi">
-        <div class="host-face" aria-hidden="true"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="30" stroke="currentColor" stroke-width="4" fill="none"/><circle cx="50" cy="50" r="8" fill="currentColor"/></svg></div>
+        <!-- 顔写真イメージ（横顔）。実写に差し替える場合は div の中身を
+             <img src="assets/img/soichi.jpg" alt=""> に置き換えてください -->
+        <div class="host-face" aria-hidden="true">
+          <svg viewBox="0 0 100 125" role="presentation">
+            <defs>
+              <pattern id="ht-soichi" width="4" height="4" patternUnits="userSpaceOnUse">
+                <circle cx="2" cy="2" r="1.05" fill="currentColor" opacity=".24"/>
+              </pattern>
+              <clipPath id="clip-soichi">
+                <path d="M24,125 C24,110 24,104 22,100 C14,92 12,80 12,62 C12,36 30,16 52,16 C68,16 76,26 76,40 L76,46 L86,58 C88,61 87,63 83,64 L77,65 C77,69 76,71 73,72 C76,74 76,77 74,79 C71,82 66,84 62,85 C58,92 54,96 50,99 V125 Z"/>
+              </clipPath>
+            </defs>
+            <rect width="100" height="125" fill="url(#ht-soichi)"/>
+            <g clip-path="url(#clip-soichi)">
+              <rect width="100" height="125" fill="currentColor" opacity=".08"/>
+              <rect x="52" width="48" height="125" fill="currentColor" opacity=".07"/>
+            </g>
+            <path d="M24,125 C24,110 24,104 22,100 C14,92 12,80 12,62 C12,36 30,16 52,16 C68,16 76,26 76,40 L76,46 L86,58 C88,61 87,63 83,64 L77,65 C77,69 76,71 73,72 C76,74 76,77 74,79 C71,82 66,84 62,85 C58,92 54,96 50,99 V125 Z"
+                  fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+            <!-- 眼鏡（Thinker の目印） -->
+            <circle cx="63" cy="45" r="7" fill="none" stroke="currentColor" stroke-width="2.2"/>
+            <path d="M70,44 L74,44" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+            <path d="M56,45 L38,42" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+          </svg>
+        </div>
         <p class="host-role"><span class="dot" data-dot-scale="xs" data-dot="THINKER"></span></p>
-        <h3 data-host="thinker">Thinker</h3>
+        <h3 data-host="thinker">Soichi</h3>
         <ul class="host-do">
           <li>仮説を立てる</li>
           <li>歴史を持ち込む</li>
@@ -218,9 +237,39 @@
         <p><span data-copy><span data-plain>AIの話をしていたはずが、気づけば「科学も、宗教みたいなものでは？」まで行く。遠くへ連れていく担当。</span><span data-deep>AIを論じていたはずが、いつのまにか「科学それ自体も一種の信仰ではないか」という地点まで滑り込む。思考を遠くへ連れ去る係。</span></span></p>
       </div>
       <div class="host js-fi">
-        <div class="host-face" aria-hidden="true"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="30" stroke="currentColor" stroke-width="4" fill="none"/><path d="M32 50h36" stroke="currentColor" stroke-width="6"/></svg></div>
-        <p class="host-role"><span class="dot" data-dot-scale="xs" data-dot="CHALLENGER"></span></p>
-        <h3 data-host="challenger">Challenger</h3>
+        <!-- 顔写真イメージ（横顔・Soichi と向かい合わせ）。実写に差し替える場合は
+             <img src="assets/img/yoshi.jpg" alt=""> に置き換えてください -->
+        <div class="host-face" aria-hidden="true">
+          <svg viewBox="0 0 100 125" role="presentation">
+            <defs>
+              <pattern id="ht-yoshi" width="4" height="4" patternUnits="userSpaceOnUse">
+                <circle cx="2" cy="2" r="1.05" fill="currentColor" opacity=".24"/>
+              </pattern>
+              <clipPath id="clip-yoshi">
+                <path d="M24,125 C24,110 24,104 22,100 C14,92 12,80 12,62 C12,36 30,16 52,16 C68,16 76,26 76,40 L76,46 L86,58 C88,61 87,63 83,64 L77,65 C77,69 76,71 73,72 C76,74 76,77 74,79 C71,82 66,84 62,85 C58,92 54,96 50,99 V125 Z"/>
+              </clipPath>
+            </defs>
+            <rect width="100" height="125" fill="url(#ht-yoshi)"/>
+            <!-- Soichi と向かい合わせになるよう左右反転 -->
+            <g transform="translate(100,0) scale(-1,1)">
+              <g clip-path="url(#clip-yoshi)">
+                <rect width="100" height="125" fill="currentColor" opacity=".08"/>
+                <rect x="52" width="48" height="125" fill="currentColor" opacity=".07"/>
+              </g>
+              <path d="M24,125 C24,110 24,104 22,100 C14,92 12,80 12,62 C12,36 30,16 52,16 C68,16 76,26 76,40 L76,46 L86,58 C88,61 87,63 83,64 L77,65 C77,69 76,71 73,72 C76,74 76,77 74,79 C71,82 66,84 62,85 C58,92 54,96 50,99 V125 Z"
+                    fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+              <!-- 目 -->
+              <path d="M58,45 L67,45" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/>
+              <!-- ヘッドセットマイク（MC の目印） -->
+              <path d="M20,54 C18,28 34,13 55,15" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/>
+              <circle cx="33" cy="55" r="7.5" fill="none" stroke="currentColor" stroke-width="2.4"/>
+              <path d="M40,58 C55,61 63,65 69,70" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+              <circle cx="71" cy="71" r="3.4" fill="currentColor"/>
+            </g>
+          </svg>
+        </div>
+        <p class="host-role"><span class="dot" data-dot-scale="xs" data-dot="MC/CHALLENGER"></span></p>
+        <h3 data-host="challenger">Yoshi</h3>
         <ul class="host-do">
           <li>顧客の現場を持ち込む</li>
           <li>実体験をぶつける</li>
@@ -228,11 +277,6 @@
         </ul>
         <p><span data-copy><span data-plain>話が綺麗にまとまりかけた瞬間に、現場の具体をひとつ置いて崩す。地面へ引き戻す担当。</span><span data-deep>構造の話が美しく閉じかけた、まさにその瞬間に、現場の生々しい一例を差し込んで崩す。議論を地表へ引き戻す係。</span></span></p>
       </div>
-    </div>
-    <div class="rule js-fi">
-      <p class="rule-label"><span class="dot is-anim" data-dot-scale="s" data-dot="RULE"></span></p>
-      <p class="rule-body">収録前、<span class="hl">Challenger は台本を読まない。</span></p>
-      <p class="rule-note"><span data-copy><span data-plain>段取りを先に共有すると、驚きも反論も「演技」になります。だから、その場で初めて聞く状態を、わざと残しています。</span><span data-deep>段取りを共有した瞬間、驚きも反論も再現された「演技」に変わる。だから、初めて聞くときの無防備さを、設計としてわざと残している。</span></span></p>
     </div>
   </section>
 

@@ -14,16 +14,14 @@ HERO      深く読むほど、わからなくなる。
 MANIFESTO 情報は誰でも取れる／文脈は深読みしないと見えない
           → ニュースではなく「なぜ今そうなったのか」
   ↓
-PARADOX   ふつうの解説番組（＝答えで終わる）との対照
-          → 深く読むほど分からなくなる。でも、そのほうが面白い。
+PARADOX   深く読むほど分からなくなる。でも、そのほうが面白い。
   ↓
 ABOUT     テックは入口。本当のテーマは「人類はなぜそう考えるのか」
           → 扱う領域：AI／IT／日本企業／資本主義／世代論／歴史／エネルギー／人間
   ↓
 EPISODES  何が話されたか、だけ知る（要点・話の流れ・キーワード）
   ↓
-HOSTS     Thinker（仮説・歴史・構造）× Challenger（現場・実体験・反証）
-          + RULE：収録前、Challenger は台本を読まない
+HOSTS     Soichi／Thinker（仮説・歴史・構造）× Yoshi／MC・Challenger（現場・実体験・反証）
   ↓
 LINKS     Podcast / YouTube / X / Shopify
 ```
